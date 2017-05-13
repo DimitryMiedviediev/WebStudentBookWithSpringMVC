@@ -12,7 +12,7 @@
     <title>Student Profile</title>
 
     <!-- Bootstrap CSS-->
-    <link href="resources/css/bootstrap.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css"/>
 
     <!-- Develops CSS -->
     <%--<link href="../css/font_style.css" rel="stylesheet">--%>
@@ -23,7 +23,7 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script type="javascript" src="resources/js/bootstrap.min.js"></script>
+    <script type="javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -80,7 +80,7 @@
                 </button>
             </form>
 
-            <a href="authorization">Авторизуватись</a>
+            <a href="/authentication/sign_in">Авторизуватись</a>
         </div>
         <div class="col-sm-4"></div>
     </div>

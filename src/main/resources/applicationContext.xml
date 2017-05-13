@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/security
+       http://www.springframework.org/schema/security/spring-security.xsd
+       http://www.springframework.org/schema/jee
+       http://www.springframework.org/schema/jee/spring-jee.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+    <context:component-scan base-package="uni.db.project"/>
+    <mvc:annotation-driven/>
+
+    <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/"/>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+
+    <!--<security:authentication-manager>-->
+        <!--<security:authentication-provider>-->
+            <!--&lt;!&ndash;<security:user-service>&ndash;&gt;-->
+            <!--&lt;!&ndash;<security:user name="admin" authorities="ROLE_ADMIN, ROLE_USER" password="admin"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<security:user name="user" authorities="ROLE_USER" password="user"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;</security:user-service>&ndash;&gt;-->
+            <!--<security:jdbc-user-service-->
+                    <!--id="jdbcUserService"-->
+                    <!--data-source-ref="appDataSource"-->
+                    <!--users-by-username-query="SELECT username, password, TRUE FROM customer WHERE username=?"-->
+                    <!--authorities-by-username-query="-->
+                    <!--SELECT username, authority-->
+                    <!--FROM customer-->
+                    <!--JOIN customer_authority-->
+                    <!--ON customer.id=customer_authority.customer_id-->
+                    <!--JOIN authority-->
+                    <!--ON authority.id=customer_authority.authority_id-->
+                    <!--WHERE username=?"/>-->
+
+            <!--<security:password-encoder ref="passwordEncoder"/>-->
+
+
+            <!--&lt;!&ndash;TRUE - это после подтверждения по емейлу, а FALSE - это до активации акккаунта по емейлу&ndash;&gt;-->
+            <!--&lt;!&ndash;users-by-username-query="SELECT username, password, TRUE FROM customer WHERE username=?"&ndash;&gt;-->
+        <!--</security:authentication-provider>-->
+    <!--</security:authentication-manager>-->
+
+    <!--<security:http auto-config="true" use-expressions="true">-->
+        <!--<security:intercept-url pattern="/login" access="permitAll"/>-->
+        <!--<security:intercept-url pattern="/" access="permitAll"/>-->
+        <!--<security:intercept-url pattern="/a1" access="hasRole('ROLE_ADMIN')"/>-->
+        <!--<security:intercept-url pattern="/a2" access="hasRole('ROLE_ADMIN')"/>-->
+        <!--<security:intercept-url pattern="/u1" access="hasRole('ROLE_USER')"/>-->
+        <!--<security:intercept-url pattern="/u2" access="hasRole('ROLE_USER')"/>-->
+        <!--<security:form-login login-page="/login"/>-->
+        <!--<security:csrf disabled="true"/>-->
+
+        <!--<security:remember-me-->
+                <!--remember-me-parameter="remember_Java"-->
+                <!--remember-me-cookie="addressBookCookie"-->
+                <!--user-service-ref="jdbcUserService"-->
+                <!--token-repository-ref="token"-->
+                <!--token-validity-seconds="3600"/>-->
+    <!--</security:http>-->
+
+    <jee:jndi-lookup
+            jndi-name="jdbc/WebStudentBookWithSpringMVC"
+            id="appDataSource"
+            expected-type="javax.sql.DataSource"/>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="appDataSource"/>
+        <property name="packagesToScan" value="uni.db.project.entity"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">uni.db.project.filter.CustomMySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="appTransactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="appTransactionManager"/>
+
+    <!--<bean id="passwordEncoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder"/>-->
+
+    <!--<bean id="token" class="org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl">-->
+        <!--<property name="dataSource" ref="appDataSource"/>-->
+    <!--</bean>-->
+
+    <!--<mvc:resources mapping="/resources/**" location="/WEB-INF/resources/"/>-->
+
+</beans>

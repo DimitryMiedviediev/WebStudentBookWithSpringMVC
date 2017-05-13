@@ -7,7 +7,7 @@
 
 <p>INDEX HTML</p>
 
-<a href="authorization">linklinknlink</a>
+<a href="/authentication/sign_in">linklinknlink</a>
 
 </body>
 </html>

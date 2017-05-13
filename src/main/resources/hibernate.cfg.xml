@@ -10,28 +10,28 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="connection.username">root</property>
         <property name="connection.password"></property>
-        <property name="dialect">filter.CustomMySQLDialect</property>
+        <property name="dialect">uni.db.project.filter.CustomMySQLDialect</property>
         <property name="show_sql">true</property>
         <property name="current_session_context_class">thread</property>
 
-        <mapping class="entity.User"/>
-        <mapping class="entity.University"/>
-        <mapping class="entity.Faculty"/>
-        <mapping class="entity.Speciality"/>
-        <mapping class="entity.group.Group"/>
-        <mapping class="entity.group.parameters.GroupEducationForm"/>
-        <mapping class="entity.group.parameters.GroupQualificationLevel"/>
-        <mapping class="entity.group.parameters.GroupStatus"/>
-        <mapping class="entity.group.Psevdogroup"/>
+        <mapping class="uni.db.project.entity.User"/>
+        <mapping class="uni.db.project.entity.University"/>
+        <mapping class="uni.db.project.entity.Faculty"/>
+        <mapping class="uni.db.project.entity.Speciality"/>
+        <mapping class="uni.db.project.entity.group.Group"/>
+        <mapping class="uni.db.project.entity.group.parameters.GroupEducationForm"/>
+        <mapping class="uni.db.project.entity.group.parameters.GroupQualificationLevel"/>
+        <mapping class="uni.db.project.entity.group.parameters.GroupStatus"/>
+        <mapping class="uni.db.project.entity.group.Psevdogroup"/>
 
 
-        <mapping class="entity.student.Student"/>
-        <mapping class="entity.student.parameters.StudentStatus"/>
-        <mapping class="entity.student.parameters.StudentFinancing"/>
-        <mapping class="entity.student.parameters.StudentSubgroup"/>
+        <mapping class="uni.db.project.entity.student.Student"/>
+        <mapping class="uni.db.project.entity.student.parameters.StudentStatus"/>
+        <mapping class="uni.db.project.entity.student.parameters.StudentFinancing"/>
+        <mapping class="uni.db.project.entity.student.parameters.StudentSubgroup"/>
 
 
-        <mapping class="entity.order.Order"/>
-        <mapping class="entity.order.parameters.OrderType"/>
+        <mapping class="uni.db.project.entity.order.Order"/>
+        <mapping class="uni.db.project.entity.order.parameters.OrderType"/>
     </session-factory>
 </hibernate-configuration>

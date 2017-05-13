@@ -9,11 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>Student Profile</title>
+    <title>Sign in</title>
 
     <!-- Bootstrap CSS-->
-    <%--<link href="../css/bootstrap.min.css" rel="stylesheet">--%>
-    <link href="resources/css/bootstrap.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css"/>
 
     <!-- Develops CSS -->
     <%--<link href="../css/font_style.css" rel="stylesheet">--%>
@@ -24,7 +23,8 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script type="javascript" src="resources/js/bootstrap.min.js"></script>
+    <%--<link type="" rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css"/>--%>
+    <script type="javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -82,7 +82,7 @@
                 </button>
             </form>
 
-            <a href="registration">Зареєструватись</a>
+            <a href="/authentication/sign_up">Зареєструватись</a>
         </div>
         <div class="col-sm-4"></div>
     </div>
