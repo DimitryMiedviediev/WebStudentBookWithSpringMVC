@@ -1,8 +1,10 @@
-package dependenciesInjection;
+package csjd.spr;
 
 /**
- * Created by Dimitry on 30.04.17.
+ * Created by Dimitry on 10.05.17.
  */
 public interface FortuneService {
+
     public String getFortune();
+
 }

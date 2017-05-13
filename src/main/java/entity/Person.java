@@ -1,31 +1,29 @@
 package entity;
 
-/**
- * Created by Dimitry on 21.04.17.
- */
-public class Person {
+import javax.persistence.Embeddable;
 
-    private int id;
+/**
+ * Created by Dimitry on 17.03.17.
+ */
+@Embeddable
+public class Person {
     private String name;
     private String surname;
-    private Address address;
+    private String patronimic;
+    private String phone1;
+    private String phone2;
+    private String email;
 
     public Person() {
     }
 
-
-    public Person(int id, String name, String surname) {
-        this.id = id;
+    public Person(String name, String surname, String patronimic, String phone1, String phone2, String email) {
         this.name = name;
         this.surname = surname;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        this.patronimic = patronimic;
+        this.phone1 = phone1;
+        this.phone2 = phone2;
+        this.email = email;
     }
 
     public String getName() {
@@ -44,12 +42,36 @@ public class Person {
         this.surname = surname;
     }
 
-    public Address getAddress() {
-        return address;
+    public String getPatronimic() {
+        return patronimic;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setPatronimic(String patronimic) {
+        this.patronimic = patronimic;
+    }
+
+    public String getPhone1() {
+        return phone1;
+    }
+
+    public void setPhone1(String phone1) {
+        this.phone1 = phone1;
+    }
+
+    public String getPhone2() {
+        return phone2;
+    }
+
+    public void setPhone2(String phone2) {
+        this.phone2 = phone2;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
@@ -59,45 +81,34 @@ public class Person {
 
         Person person = (Person) o;
 
-        if (id != person.id) return false;
         if (name != null ? !name.equals(person.name) : person.name != null) return false;
         if (surname != null ? !surname.equals(person.surname) : person.surname != null) return false;
-        return address != null ? address.equals(person.address) : person.address == null;
+        if (patronimic != null ? !patronimic.equals(person.patronimic) : person.patronimic != null) return false;
+        if (phone1 != null ? !phone1.equals(person.phone1) : person.phone1 != null) return false;
+        if (phone2 != null ? !phone2.equals(person.phone2) : person.phone2 != null) return false;
+        return email != null ? email.equals(person.email) : person.email == null;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
+        int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
-        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (patronimic != null ? patronimic.hashCode() : 0);
+        result = 31 * result + (phone1 != null ? phone1.hashCode() : 0);
+        result = 31 * result + (phone2 != null ? phone2.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
         return "Person{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", address=" + address +
+                ", patronimic='" + patronimic + '\'' +
+                ", phone1='" + phone1 + '\'' +
+                ", phone2='" + phone2 + '\'' +
+                ", email='" + email + '\'' +
                 '}';
-    }
-
-    public void speak(){
-        System.out.println("I'm a greater Java Coder ever.");
-    }
-
-    public void onCreate(){
-        System.out.println("Person created: " + this);
-    }
-
-    public void onDestroy(){
-        System.out.println("Person destroyed:" + this);
-    }
-
-    public static Person getInstance(){
-        System.out.println("Creating Person using Factory Method");
-        return new Person();
     }
 }

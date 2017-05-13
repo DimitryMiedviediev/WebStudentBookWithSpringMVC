@@ -2,25 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
-       default-init-method="init"
-       default-destroy-method="destroy">
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd"
+>
 
-    <context:property-placeholder location="sport.properties"/>
-
-    <bean id="fortuneService" class="dependenciesInjection.HappyFortuneService"/>
-
-    <bean id="baseballCoach" class="inversionOfControl.BaseballCoach">
-        <constructor-arg ref="fortuneService"/>
-    </bean>
-    <bean id="trackCoach" class="inversionOfControl.TrackCoach">
-        <constructor-arg ref="fortuneService"/>
-    </bean>
-    <bean id="cricketCoach" class="inversionOfControl.CricketCoach">
-        <property name="fortuneService" ref="fortuneService"/>
-        <property name="name" value="${foo.name}"/>
-        <property name="email" value="${foo.email}"/>
-    </bean>
-
+    <context:component-scan base-package="csjd.spr"/>
 
 </beans>
