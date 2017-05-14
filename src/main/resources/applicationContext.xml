@@ -23,8 +23,11 @@
     <context:component-scan base-package="uni.db.project"/>
     <mvc:annotation-driven/>
 
+
+    <!--Mapping "resource" folder in WEB-INF-->
     <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/"/>
 
+    <!--Parsing .jsp pages in "view" folder. Return only name of file (page) without ".jsp"-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/view/"/>
         <property name="suffix" value=".jsp"/>
@@ -76,6 +79,7 @@
                 <!--token-validity-seconds="3600"/>-->
     <!--</security:http>-->
 
+    <!--JNDI-LOOKUP part. Give remote or local server configurations connect to DataBase-->
     <jee:jndi-lookup
             jndi-name="jdbc/WebStudentBookWithSpringMVC"
             id="appDataSource"
@@ -86,8 +90,8 @@
         <property name="packagesToScan" value="uni.db.project.entity"/>
         <property name="hibernateProperties">
             <props>
-                <!--<prop key="hibernate.dialect">uni.db.project.filter.CustomMySQLDialect</prop>-->
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.dialect">uni.db.project.filter.CustomMySQLDialect</prop>
+                <!--<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>-->
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
             </props>
@@ -105,7 +109,4 @@
     <!--<bean id="token" class="org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl">-->
         <!--<property name="dataSource" ref="appDataSource"/>-->
     <!--</bean>-->
-
-    <!--<mvc:resources mapping="/resources/**" location="/WEB-INF/resources/"/>-->
-
 </beans>

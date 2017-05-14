@@ -41,49 +41,14 @@
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
 
-            <%--<form class="form-signin" action="registration" method="post">--%>
-            <%--<h2 class="form-signin-heading text-center">Реєстрація</h2>--%>
+            <h2 class="form-signin-heading text-center">Реєстрація</h2>
 
-            <%--<c:if test="${error eq null}">--%>
-            <%--<div class="form-group">--%>
-            <%--<input type="email" class="form-control" placeholder="Пошта" required=""--%>
-            <%--autofocus="" name="email" maxlength="100">--%>
-            <%--<input type="password" class="form-control" placeholder="Пароль" required="" name="password"--%>
-            <%--minlength="8">--%>
-            <%--</div>--%>
-            <%--</c:if>--%>
-            <%--<c:if test="${error ne null}">--%>
-            <%--<div class="form-group has-error">--%>
-            <%--<c:forEach var="userMap" items="${userMap}">--%>
-            <%--<c:if test="${userMap.key eq null}">--%>
-            <%--<input type="email" class="form-control" placeholder="Пошта" required=""--%>
-            <%--autofocus="" name="email">--%>
-            <%--</c:if>--%>
-            <%--<c:if test="${userMap.key ne null}">--%>
-            <%--<input type="email" class="form-control" placeholder="Пошта" required=""--%>
-            <%--autofocus="" name="email" value="${userMap.key}">--%>
-            <%--</c:if>--%>
-            <%--<c:if test="${userMap.value eq null}">--%>
-            <%--<input type="password" class="form-control" placeholder="Пароль" required=""--%>
-            <%--name="password">--%>
-            <%--</c:if>--%>
-            <%--<c:if test="${userMap.value ne null}">--%>
-            <%--<input type="password" class="form-control" placeholder="Пароль" required=""--%>
-            <%--name="password"--%>
-            <%--value="${userMap.value}">--%>
-            <%--</c:if>--%>
-            <%--</c:forEach>--%>
-            <%--</div>--%>
-            <%--</c:if>--%>
-
-            <%--<button class="btn btn-lg btn-default btn-block" type="submit" formmethod="post" name="signUp"--%>
-            <%--value="signUp">Зареєструватись--%>
-            <%--</button>--%>
-            <%--</form>--%>
-
-            <form:form action="createNewUser" method="post" modelAttribute="user">
-                <form:input path="username" class="form-control" placeholder="Ім'я користувача"/>
-                <form:input path="password" class="form-control" placeholder="Пароль"/>
+            <form:form action="createNewUser" method="POST" modelAttribute="user">
+                <form:input path="username" type="text" class="form-control" placeholder="Ім'я користувача"/>
+                <br>
+                <form:input path="email" type="email" class="form-control" placeholder="Електронна адреса"/>
+                <br>
+                <form:input path="password" type="password" class="form-control" placeholder="Пароль"/>
                 <br>
                 <input type="submit" class="btn btn-lg btn-default btn-block" value="Зареєстуватись">
                 <%--TODO Добавить поле Confirm password, проверку сделать JS--%>

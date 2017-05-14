@@ -9,14 +9,10 @@ public interface UserDAO {
 
     void createNewUser(User user);
 
-    User getUserInfo(String email, String password);
+    Boolean validateUser(String username, String email, String password);
 
-    Boolean testUser(String email, String password);
+    Boolean validateEmail(String email);
 
-    Boolean testEmailExist(String email);
-
-    Boolean testEmailFormat(String email);
-
-    Boolean testPasswordLength(String password);
+    Boolean validatePassword(String password);
 
 }

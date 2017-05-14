@@ -8,6 +8,9 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import uni.db.project.entity.Authority;
 import uni.db.project.entity.User;
 
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+
 /**
  * Created by Dimitry on 14.05.17.
  */
@@ -21,9 +24,10 @@ public class Start {
 
 //        createAuthority("ROLE_ADMIN");
 //        createAuthority("ROLE_USER");
+
     }
 
-    public static void createUser(String username, String password) {
+    public static void createUser(String username, String email, String password) {
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
         SessionFactory factory = null;
         try {
@@ -31,7 +35,7 @@ public class Start {
             Session session = factory.getCurrentSession();
             session.beginTransaction();
 
-            User user = new User(username, password);
+            User user = new User(username, email, password);
 
             session.save(user);
 
@@ -88,6 +92,23 @@ public class Start {
                 factory.close();
             }
         }
+    }
+
+    public static boolean validateEmail(String email) {
+        boolean isValid = false;
+        try {
+            InternetAddress internetAddress = new InternetAddress(email);
+            internetAddress.validate();
+            isValid = true;
+        } catch (AddressException e) {
+            System.out.println("Email is not valid: " + email);
+        }
+        return isValid;
+    }
+
+    public static void validatePassword(String password){
+        String pattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}";
+        System.out.println(password.matches(pattern));
     }
 
 }

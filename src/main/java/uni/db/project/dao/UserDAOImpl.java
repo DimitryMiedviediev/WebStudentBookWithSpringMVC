@@ -1,22 +1,20 @@
 package uni.db.project.dao;
 
-import javafx.beans.binding.BooleanBinding;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import uni.db.project.entity.User;
 
-import java.util.List;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.persistence.NoResultException;
 
 /**
  * Created by Dimitry on 13.05.17.
  */
 @Repository
-public class UserDAOImpl implements UserDAO{
+public class UserDAOImpl implements UserDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -24,58 +22,51 @@ public class UserDAOImpl implements UserDAO{
     @Override
     public void createNewUser(User user) {
         Session session = sessionFactory.getCurrentSession();
-        session.save(user);
+        session.persist(user);
     }
 
     @Override
-    public User getUserInfo(String email, String password){
-        Session session = sessionFactory.getCurrentSession();
-        User user = (User) session.createQuery("FROM User WHERE userEmail = '" + email + "' AND userPassword = '" + password + "'").getSingleResult();
-        return user;
-    }
-
-    @Override
-    public Boolean testUser(String email, String password) {
+    public Boolean validateUser(String username, String email, String password) {
         Session session = sessionFactory.getCurrentSession();
         Boolean bool = false;
-        User user = (User) session.createQuery("FROM User WHERE userEmail = '" + email + "' AND userPassword = '" + password + "'").getSingleResult();
-        if(user != null){
+        User user = null;
+        try {
+            user = (User) session.createQuery("FROM User WHERE (username = '" + username + "' AND password = '" + password + "') OR (email = '" + email + "' AND password = '" + password + "')").getSingleResult();
+        } catch (NoResultException e) {
+            return false;
+        }
+        if (user != null) {
             bool = true;
         }
         return bool;
     }
 
     @Override
-    public Boolean testEmailExist(String email) {
-        Session session = sessionFactory.getCurrentSession();
-        Boolean bool = false;
-        String emailExist = (String) session.createQuery("FROM User WHERE userEmail = '" + email + "'").getSingleResult();
-        if(emailExist!=null){
-            bool = true;
+    public Boolean validateEmail(String email) {
+        boolean result = true;
+        try {
+            InternetAddress emailAddress = new InternetAddress(email);
+            emailAddress.validate();
+        } catch (AddressException ex) {
+            result = false;
         }
-        return bool;
+        return result;
     }
 
     @Override
-    public Boolean testEmailFormat(String email) {
-        Boolean bool = false;
-        char[] charList = email.toCharArray();
-        for (int i = 0; i < charList.length; i++) {
-            if (String.valueOf(charList[i]).equals("@")) {
-                bool = true;
-            }
-        }
-        return bool;
-    }
-
-    @Override
-    public Boolean testPasswordLength(String password) {
-        Boolean bool = false;
-        char[] charList = password.toCharArray();
-        if (charList.length >= 8) {
-            bool = true;
-        }
-        return bool;
+    public Boolean validatePassword(String password) {
+//        ^                     #start - of - string
+//        ( ? =.*[0 - 9])       #a digit must occur at least once
+//        ( ? =.*[a - z])       #a lower case letter must occur at least once
+//        ( ? =.*[A - Z])       #an upper case letter must occur at least once
+//        ( ? =.*[@#$ % ^&+=])  #a special character must occur at least once
+//        ( ? =\S + $)          #no whitespace allowed in the entire string
+//        .{8,}                 #anything, at least eight places though
+//        $                     #end - of - string
+//        String pattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}";
+        String pattern = "(?=.*[0-9])(?=.*[a-z])(?=\\S+$).{8,}";
+        Boolean isValid = password.matches(pattern);
+        return isValid;
     }
 
 }

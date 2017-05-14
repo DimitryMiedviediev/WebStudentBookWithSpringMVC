@@ -23,29 +23,17 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     @Transactional
-    public User getUserInfo(String email, String password) {
-        return userDAO.getUserInfo(email, password);
+    public Boolean validateUser(String username, String email, String password) {
+        return userDAO.validateUser(username, email, password);
     }
 
     @Override
-    @Transactional
-    public Boolean testUser(String email, String password) {
-        return userDAO.testUser(email, password);
+    public Boolean validateEmail(String email) {
+        return userDAO.validateEmail(email);
     }
 
     @Override
-    @Transactional
-    public Boolean testEmailExist(String email) {
-        return userDAO.testEmailExist(email);
-    }
-
-    @Override
-    public Boolean testEmailFormat(String email) {
-        return userDAO.testEmailFormat(email);
-    }
-
-    @Override
-    public Boolean testPasswordLength(String password) {
-        return userDAO.testPasswordLength(password);
+    public Boolean validatePassword(String password) {
+        return userDAO.validatePassword(password);
     }
 }

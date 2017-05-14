@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,15 +44,15 @@
 
             <h2 class="form-signin-heading text-center">Авторизація</h2>
 
-            <form action="/trap" method="post">
-                <%--<c:if test="${param.containsKey('error')}">--%>
-                <%--<p class="error">Неверный логин или пароль!</p>--%>
-                <%--</c:if>--%>
-                <input name="username" type="text" class="form-control" placeholder="Ім'я користувача"/>
-                <input name="password" type="password" class="form-control" placeholder="Пароль"/>
+            <form:form action="validateUser" method="POST">
+                <form:input path="username" type="text" class="form-control" placeholder="Ім'я користувача"/>
+                <br>
+                <form:input path="email" type="email" class="form-control" placeholder="Електронна адреса"/>
+                <br>
+                <form:input path="password" type="password" class="form-control" placeholder="Пароль"/>
                 <br>
                 <input type="submit" class="btn btn-lg btn-default btn-block" value="Увійти">
-            </form>
+            </form:form>
 
             <a href="/sign_up">Зареєструватись</a>
         </div>
