@@ -21,18 +21,20 @@ public class UserDAOImpl implements UserDAO{
     @Autowired
     private SessionFactory sessionFactory;
 
-    public void createNewUser(String email, String password) {
+    @Override
+    public void createNewUser(User user) {
         Session session = sessionFactory.getCurrentSession();
-        User user = new User(email, password);
-        session.persist(user);
+        session.save(user);
     }
 
+    @Override
     public User getUserInfo(String email, String password){
         Session session = sessionFactory.getCurrentSession();
         User user = (User) session.createQuery("FROM User WHERE userEmail = '" + email + "' AND userPassword = '" + password + "'").getSingleResult();
         return user;
     }
 
+    @Override
     public Boolean testUser(String email, String password) {
         Session session = sessionFactory.getCurrentSession();
         Boolean bool = false;
@@ -43,6 +45,7 @@ public class UserDAOImpl implements UserDAO{
         return bool;
     }
 
+    @Override
     public Boolean testEmailExist(String email) {
         Session session = sessionFactory.getCurrentSession();
         Boolean bool = false;
@@ -53,6 +56,7 @@ public class UserDAOImpl implements UserDAO{
         return bool;
     }
 
+    @Override
     public Boolean testEmailFormat(String email) {
         Boolean bool = false;
         char[] charList = email.toCharArray();
@@ -64,6 +68,7 @@ public class UserDAOImpl implements UserDAO{
         return bool;
     }
 
+    @Override
     public Boolean testPasswordLength(String password) {
         Boolean bool = false;
         char[] charList = password.toCharArray();

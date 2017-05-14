@@ -86,7 +86,8 @@
         <property name="packagesToScan" value="uni.db.project.entity"/>
         <property name="hibernateProperties">
             <props>
-                <prop key="hibernate.dialect">uni.db.project.filter.CustomMySQLDialect</prop>
+                <!--<prop key="hibernate.dialect">uni.db.project.filter.CustomMySQLDialect</prop>-->
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
             </props>

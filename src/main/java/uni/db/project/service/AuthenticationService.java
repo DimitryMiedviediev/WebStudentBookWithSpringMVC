@@ -7,7 +7,7 @@ import uni.db.project.entity.User;
  */
 public interface AuthenticationService {
 
-    void createNewUser(String email, String password);
+    void createNewUser(User user);
 
     User getUserInfo(String email, String password);
 

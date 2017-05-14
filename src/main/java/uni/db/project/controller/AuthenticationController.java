@@ -3,6 +3,8 @@ package uni.db.project.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import uni.db.project.entity.User;
 import uni.db.project.service.AuthenticationService;
@@ -11,7 +13,7 @@ import uni.db.project.service.AuthenticationService;
  * Created by Dimitry on 13.05.17.
  */
 @Controller
-@RequestMapping("/authentication")
+//@RequestMapping("/authentication")
 public class AuthenticationController {
 
     @Autowired
@@ -27,4 +29,18 @@ public class AuthenticationController {
         model.addAttribute("user", new User());
         return "authentication/sign_up";
     }
+
+    @PostMapping("/createNewUser")
+    public String createNewUser(@ModelAttribute("user") User user){
+        authenticationService.createNewUser(user);
+        return "redirect:/sign_in";
+    }
+
+    @RequestMapping("/trap")
+    public String getTrapPage(){
+        return "authentication/trap";
+    }
+
+
+
 }
