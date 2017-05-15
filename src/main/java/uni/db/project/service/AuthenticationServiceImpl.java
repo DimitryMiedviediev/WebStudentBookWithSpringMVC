@@ -22,6 +22,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
+    public Boolean testUserForm(String username, String email, String password) {
+        return userDAO.testUserForm(username, email, password);
+    }
+
+    @Override
     @Transactional
     public Boolean validateUser(String username, String email, String password) {
         return userDAO.validateUser(username, email, password);

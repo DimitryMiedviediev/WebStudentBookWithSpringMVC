@@ -26,6 +26,23 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    public Boolean testUserForm(String username, String email, String password) {
+        if(
+                username != null &&
+                !username.equals("")&&
+                email != null&&
+                !email.equals("")&&
+                validateEmail(email)&&
+                password != null&&
+                !password.equals("")&&
+                validatePassword(password)){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    @Override
     public Boolean validateUser(String username, String email, String password) {
         Session session = sessionFactory.getCurrentSession();
         Boolean bool = false;

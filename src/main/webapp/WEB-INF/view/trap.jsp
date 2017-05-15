@@ -13,6 +13,9 @@
 <body>
 
 <h3>This is trap page!!</h3>
+${username}
+${email}
+${password}
 
 </body>
 </html>

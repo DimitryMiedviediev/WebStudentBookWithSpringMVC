@@ -9,6 +9,8 @@ public interface UserDAO {
 
     void createNewUser(User user);
 
+    Boolean testUserForm(String username, String email, String password);
+
     Boolean validateUser(String username, String email, String password);
 
     Boolean validateEmail(String email);
