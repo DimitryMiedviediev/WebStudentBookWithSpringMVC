@@ -10,7 +10,7 @@
 // * Created by Dimitry on 08.04.17.
 // */
 //@Entity
-//@Table(name = "StudentFinancing")
+//@Table(name = "studentFinancing")
 //public class StudentFinancing {
 //
 //    @Id

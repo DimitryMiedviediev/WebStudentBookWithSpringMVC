@@ -17,7 +17,7 @@
 // * Created by Dimitry on 17.03.17.
 // */
 //@Entity
-//@Table(name = "Students")
+//@Table(name = "student")
 //public class Student {
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)

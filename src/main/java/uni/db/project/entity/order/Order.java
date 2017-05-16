@@ -11,7 +11,7 @@
 // * Created by Dimitry on 17.03.17.
 // */
 //@Entity
-//@Table(name = "Orders")
+//@Table(name = "order")
 //public class Order {
 //
 //    @Id

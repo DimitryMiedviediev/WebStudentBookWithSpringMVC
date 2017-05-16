@@ -20,7 +20,7 @@ public class UserDAOImpl implements UserDAO {
     private SessionFactory sessionFactory;
 
     @Override
-    public void createNewUser(User user) {
+    public void createUser(User user) {
         Session session = sessionFactory.getCurrentSession();
         session.persist(user);
     }

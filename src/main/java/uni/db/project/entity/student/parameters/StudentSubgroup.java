@@ -10,7 +10,7 @@
 // * Created by Dimitry on 09.04.17.
 // */
 //@Entity
-//@Table(name = "StudentSubgroup")
+//@Table(name = "studentSubgroup")
 //public class StudentSubgroup {
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,30 +1,33 @@
 package uni.db.project.entity;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
- * Created by Dimitry on 17.03.17.
+ * Created by Dimitry on 16.05.17.
  */
 @Entity
-@Table(name = "speciality")
-public class Speciality {
+@Table(name = "department")
+public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "speciality_title", unique = true, nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "faculty_id", nullable = false)
+    private Faculty faculty;
+
+    @Column(name = "department_title", unique = true, nullable = false)
     private String title;
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "speciality")
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "department")
 //    private Set<Group> groups = new HashSet<>();
 
-    public Speciality() {
+    public Department() {
     }
 
-    public Speciality(String title) {
+    public Department(Faculty faculty, String title) {
+        this.faculty = faculty;
         this.title = title;
     }
 
@@ -49,7 +52,7 @@ public class Speciality {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Speciality that = (Speciality) o;
+        Department that = (Department) o;
 
         if (id != that.id) return false;
         return title != null ? title.equals(that.title) : that.title == null;
@@ -60,5 +63,13 @@ public class Speciality {
         int result = id;
         result = 31 * result + (title != null ? title.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                '}';
     }
 }

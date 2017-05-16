@@ -1,8 +1,8 @@
 //package uni.db.project.entity.group;
 //
 //import uni.db.project.entity.Speciality;
-//import uni.db.project.entity.group.parameters.GroupEducationForm;
-//import uni.db.project.entity.group.parameters.GroupQualificationLevel;
+//import uni.db.project.entity.group.parameters.EducationForm;
+//import uni.db.project.entity.group.parameters.QualificationLevel;
 //import uni.db.project.entity.student.Student;
 //
 //import javax.persistence.*;
@@ -11,7 +11,7 @@
 // * Created by Dimitry on 19.04.17.
 // */
 //@Entity
-//@Table(name = "Psevdogroups")
+//@Table(name = "psevdogroup")
 //public class Psevdogroup {
 //
 //    @Id
@@ -28,11 +28,11 @@
 //
 //    @ManyToOne(fetch = FetchType.EAGER)
 //    @JoinColumn(name = "group_education_form_id", nullable = false)
-//    private GroupEducationForm groupEducationForm;
+//    private EducationForm groupEducationForm;
 //
 //    @ManyToOne(fetch = FetchType.EAGER)
 //    @JoinColumn(name = "group_qualification_level_id", nullable = false)
-//    private GroupQualificationLevel groupQualificationLevel;
+//    private QualificationLevel groupQualificationLevel;
 //
 //    @Column(name = "group_course", nullable = false)
 //    private int groupCourse;
@@ -43,7 +43,7 @@
 //    public Psevdogroup() {
 //    }
 //
-//    public Psevdogroup(Speciality speciality, int groupNumber, GroupEducationForm groupEducationForm, GroupQualificationLevel groupQualificationLevel, int groupCourse, Student student) {
+//    public Psevdogroup(Speciality speciality, int groupNumber, EducationForm groupEducationForm, QualificationLevel groupQualificationLevel, int groupCourse, Student student) {
 //        this.speciality = speciality;
 //        this.groupNumber = groupNumber;
 //        this.groupEducationForm = groupEducationForm;
@@ -76,19 +76,19 @@
 //        this.groupNumber = groupNumber;
 //    }
 //
-//    public GroupEducationForm getGroupEducationForm() {
+//    public EducationForm getGroupEducationForm() {
 //        return groupEducationForm;
 //    }
 //
-//    public void setGroupEducationForm(GroupEducationForm groupEducationForm) {
+//    public void setGroupEducationForm(EducationForm groupEducationForm) {
 //        this.groupEducationForm = groupEducationForm;
 //    }
 //
-//    public GroupQualificationLevel getGroupQualificationLevel() {
+//    public QualificationLevel getGroupQualificationLevel() {
 //        return groupQualificationLevel;
 //    }
 //
-//    public void setGroupQualificationLevel(GroupQualificationLevel groupQualificationLevel) {
+//    public void setGroupQualificationLevel(QualificationLevel groupQualificationLevel) {
 //        this.groupQualificationLevel = groupQualificationLevel;
 //    }
 //

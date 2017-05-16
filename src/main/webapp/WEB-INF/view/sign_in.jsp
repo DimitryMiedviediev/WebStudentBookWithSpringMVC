@@ -43,19 +43,20 @@
         <div class="col-sm-4">
 
             <h2 class="form-signin-heading text-center">Авторизація</h2>
-            ${error}
 
             <form:form action="validateUser" method="POST" modelAttribute="user">
-                <form:input path="username" type="text" class="form-control ${error}" placeholder="Ім'я користувача"/>
-                <br>
-                <form:input path="email" type="email" class="form-control ${error}" placeholder="Електронна адреса"/>
-                <br>
-                <form:input path="password" type="password" class="form-control ${error}" placeholder="Пароль"/>
-                <br>
+                <div class="form-group ${error}">
+                    <form:input path="username" type="text" class="form-control"
+                                placeholder="Ім'я користувача"/>
+                    <form:input path="email" type="email" class="form-control"
+                                placeholder="Електронна адреса"/>
+                    <form:input path="password" type="password" class="form-control" placeholder="Пароль"/>
+                </div>
+
                 <input type="submit" class="btn btn-lg btn-default btn-block" value="Увійти">
             </form:form>
 
-            <a href="/sign_up">Зареєструватись</a>
+            <a href="/authentication/sign_up">Зареєструватись</a>
         </div>
         <div class="col-sm-4"></div>
     </div>

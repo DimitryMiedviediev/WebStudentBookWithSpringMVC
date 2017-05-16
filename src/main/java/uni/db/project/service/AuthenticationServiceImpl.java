@@ -17,8 +17,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     @Transactional
-    public void createNewUser(User user) {
-        userDAO.createNewUser(user);
+    public void createUser(User user) {
+        userDAO.createUser(user);
     }
 
     @Override
@@ -30,15 +30,5 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Transactional
     public Boolean validateUser(String username, String email, String password) {
         return userDAO.validateUser(username, email, password);
-    }
-
-    @Override
-    public Boolean validateEmail(String email) {
-        return userDAO.validateEmail(email);
-    }
-
-    @Override
-    public Boolean validatePassword(String password) {
-        return userDAO.validatePassword(password);
     }
 }

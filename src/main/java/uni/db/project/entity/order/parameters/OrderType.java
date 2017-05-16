@@ -10,7 +10,7 @@
 // * Created by Dimitry on 31.03.17.
 // */
 //@Entity
-//@Table(name = "OrderTypes")
+//@Table(name = "orderType")
 //public class OrderType {
 //
 //    @Id

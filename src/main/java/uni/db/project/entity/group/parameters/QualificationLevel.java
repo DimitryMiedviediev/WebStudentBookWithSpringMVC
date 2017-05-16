@@ -8,25 +8,24 @@ import java.util.Set;
  * Created by Dimitry on 04.04.17.
  */
 @Entity
-@Table(name = "groupStatus")
-public class GroupStatus {
+@Table(name = "qualificationLevel")
+public class QualificationLevel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
 
-    @Column(name = "group_status_title", unique = true, nullable = false)
-    private String groupStatusTitle;
+    @Column(name = "qualification_level_title", unique = true, nullable = false)
+    private String title;
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "groupStatus")
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "qualificationLevel")
 //    private Set<Group> groups = new HashSet<>();
 
-    public GroupStatus() {
+    public QualificationLevel() {
     }
 
-    public GroupStatus(String groupStatusTitle) {
-        this.groupStatusTitle = groupStatusTitle;
+    public QualificationLevel(String title) {
+        this.title = title;
     }
 
     public int getId() {
@@ -37,12 +36,12 @@ public class GroupStatus {
         this.id = id;
     }
 
-    public String getGroupStatusTitle() {
-        return groupStatusTitle;
+    public String getTitle() {
+        return title;
     }
 
-    public void setGroupStatusTitle(String groupStatusTitle) {
-        this.groupStatusTitle = groupStatusTitle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
 //    public Set<Group> getGroups() {
@@ -58,24 +57,24 @@ public class GroupStatus {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        GroupStatus that = (GroupStatus) o;
+        QualificationLevel that = (QualificationLevel) o;
 
         if (id != that.id) return false;
-        return groupStatusTitle != null ? groupStatusTitle.equals(that.groupStatusTitle) : that.groupStatusTitle == null;
+        return title != null ? title.equals(that.title) : that.title == null;
     }
 
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (groupStatusTitle != null ? groupStatusTitle.hashCode() : 0);
+        result = 31 * result + (title != null ? title.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "GroupStatus{" +
+        return "QualificationLevel{" +
                 "id=" + id +
-                ", groupStatusTitle='" + groupStatusTitle + '\'' +
+                ", title='" + title + '\'' +
                 '}';
     }
 }

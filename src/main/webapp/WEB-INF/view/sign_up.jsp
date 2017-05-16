@@ -44,17 +44,17 @@
             <h2 class="form-signin-heading text-center">Реєстрація</h2>
 
             <form:form action="createNewUser" method="POST" modelAttribute="user">
-                <form:input path="username" type="text" class="form-control" placeholder="Ім'я користувача"/>
-                <br>
-                <form:input path="email" type="email" class="form-control" placeholder="Електронна адреса"/>
-                <br>
-                <form:input path="password" type="password" class="form-control" placeholder="Пароль"/>
-                <br>
+                <div class="form-group ${error}">
+                    <form:input path="username" type="text" class="form-control" placeholder="Ім'я користувача"/>
+                    <form:input path="email" type="email" class="form-control" placeholder="Електронна адреса"/>
+                    <form:input path="password" type="password" class="form-control" placeholder="Пароль"/>
+                </div>
+
                 <input type="submit" class="btn btn-lg btn-default btn-block" value="Зареєстуватись">
                 <%--TODO Добавить поле Confirm password, проверку сделать JS--%>
             </form:form>
 
-            <a href="/sign_in">Авторизуватись</a>
+            <a href="/authentication/sign_in">Авторизуватись</a>
         </div>
         <div class="col-sm-4"></div>
     </div>

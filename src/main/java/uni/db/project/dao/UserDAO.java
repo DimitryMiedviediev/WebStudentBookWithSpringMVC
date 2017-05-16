@@ -7,7 +7,7 @@ import uni.db.project.entity.User;
  */
 public interface UserDAO {
 
-    void createNewUser(User user);
+    void createUser(User user);
 
     Boolean testUserForm(String username, String email, String password);
 
