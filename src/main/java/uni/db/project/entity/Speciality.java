@@ -18,8 +18,8 @@ public class Speciality {
     @Column(name = "speciality_title", unique = true, nullable = false)
     private String title;
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "speciality")
-//    private Set<Group> groups = new HashSet<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "speciality")
+    private Set<Group> groups = new HashSet<>();
 
     public Speciality() {
     }

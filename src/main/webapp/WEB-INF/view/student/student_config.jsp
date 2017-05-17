@@ -467,7 +467,7 @@
                         </c:if>
                     </tr>
                     </tbody>
-                    <!-- Status information -->
+                    <!-- GroupPx information -->
                     <thead>
                     <tr>
                         <th class="col-sm-6 text-center"><h4><b>Статус</b></h4></th>

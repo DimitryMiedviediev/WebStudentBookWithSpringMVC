@@ -36,8 +36,8 @@ public class Faculty {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "faculty")
     private Set<Department> departments = new HashSet<>();
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "faculty")
-//    private Set<Group> groups = new HashSet<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "faculty")
+    private Set<Group> groups = new HashSet<>();
 
     public Faculty() {
     }

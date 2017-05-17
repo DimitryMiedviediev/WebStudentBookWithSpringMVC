@@ -1,4 +1,4 @@
-package uni.db.project.entity.group.parameters;
+package uni.db.project.entity;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -19,8 +19,8 @@ public class GroupStatus {
     @Column(name = "group_status_title", unique = true, nullable = false)
     private String groupStatusTitle;
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "groupStatus")
-//    private Set<Group> groups = new HashSet<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "groupStatus")
+    private Set<Group> groups = new HashSet<>();
 
     public GroupStatus() {
     }
@@ -45,11 +45,11 @@ public class GroupStatus {
         this.groupStatusTitle = groupStatusTitle;
     }
 
-//    public Set<Group> getGroups() {
+//    public Set<GroupPx> getGroups() {
 //        return groups;
 //    }
 //
-//    public void setGroups(Set<Group> groups) {
+//    public void setGroups(Set<GroupPx> groups) {
 //        this.groups = groups;
 //    }
 

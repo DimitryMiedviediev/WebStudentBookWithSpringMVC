@@ -1,6 +1,8 @@
 package uni.db.project.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Dimitry on 16.05.17.
@@ -20,8 +22,8 @@ public class Department {
     @Column(name = "department_title", unique = true, nullable = false)
     private String title;
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "department")
-//    private Set<Group> groups = new HashSet<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "department")
+    private Set<Group> groups = new HashSet<>();
 
     public Department() {
     }

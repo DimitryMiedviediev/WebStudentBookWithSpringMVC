@@ -7,10 +7,10 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import uni.db.project.entity.*;
-import uni.db.project.entity.group.Group;
-import uni.db.project.entity.group.parameters.EducationForm;
-import uni.db.project.entity.group.parameters.GroupStatus;
-import uni.db.project.entity.group.parameters.QualificationLevel;
+import uni.db.project.entity.Group;
+import uni.db.project.entity.EducationForm;
+import uni.db.project.entity.GroupStatus;
+import uni.db.project.entity.QualificationLevel;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
@@ -28,7 +28,16 @@ public class Start {
 //        createEducationForm();
 //        createQualificationLevel();
 //        createGroupStatus();
-        createGroup();
+
+//        createGroup(
+//                getFaculty(1),
+//                12,
+//                getSpeciality(1),
+//                getDepartment(1),
+//                getEducationForm(1),
+//                getQualificationLevel(1),
+//                2,
+//                getGroupStatus(1));
 
 
 
@@ -613,7 +622,15 @@ public class Start {
     /*
     Default injection some values in TABLE group
      */
-    public static void createGroup() {
+    public static void createGroup(
+            Faculty faculty,
+            int number,
+            Speciality speciality,
+            Department department,
+            EducationForm educationForm,
+            QualificationLevel qualificationLevel,
+            int course,
+            GroupStatus groupStatus) {
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
         SessionFactory factory = null;
 
@@ -622,7 +639,7 @@ public class Start {
             Session session = factory.getCurrentSession();
             session.beginTransaction();
 
-            session.save(new Group());
+            session.save(new Group(faculty, number, speciality, department, educationForm, qualificationLevel, course, groupStatus));
 
             session.getTransaction().commit();
         } catch (Exception e) {

@@ -26,20 +26,16 @@
         <mapping class="uni.db.project.entity.Faculty"/>
         <mapping class="uni.db.project.entity.Speciality"/>
         <mapping class="uni.db.project.entity.Department"/>
-        <mapping class="uni.db.project.entity.group.Group"/>
-        <mapping class="uni.db.project.entity.group.parameters.EducationForm"/>
-        <mapping class="uni.db.project.entity.group.parameters.QualificationLevel"/>
-        <mapping class="uni.db.project.entity.group.parameters.GroupStatus"/>
-        <!--<mapping class="uni.db.project.entity.group.Psevdogroup"/>-->
+        <mapping class="uni.db.project.entity.Group"/>
+        <mapping class="uni.db.project.entity.Psevdogroup"/>
+        <mapping class="uni.db.project.entity.Student"/>
+        <mapping class="uni.db.project.entity.Subgroup"/>
+        <mapping class="uni.db.project.entity.StudentStatus"/>
+        <mapping class="uni.db.project.entity.Financing"/>
+        <mapping class="uni.db.project.entity.EducationForm"/>
+        <mapping class="uni.db.project.entity.QualificationLevel"/>
+        <mapping class="uni.db.project.entity.GroupStatus"/>
 
 
-        <!--<mapping class="uni.db.project.entity.student.Student"/>-->
-        <!--<mapping class="uni.db.project.entity.student.parameters.StudentStatus"/>-->
-        <!--<mapping class="uni.db.project.entity.student.parameters.StudentFinancing"/>-->
-        <!--<mapping class="uni.db.project.entity.student.parameters.StudentSubgroup"/>-->
-
-
-        <!--<mapping class="uni.db.project.entity.order.Order"/>-->
-        <!--<mapping class="uni.db.project.entity.order.parameters.OrderType"/>-->
     </session-factory>
 </hibernate-configuration>

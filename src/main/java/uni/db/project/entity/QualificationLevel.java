@@ -1,4 +1,4 @@
-package uni.db.project.entity.group.parameters;
+package uni.db.project.entity;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -18,8 +18,8 @@ public class QualificationLevel {
     @Column(name = "qualification_level_title", unique = true, nullable = false)
     private String title;
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "qualificationLevel")
-//    private Set<Group> groups = new HashSet<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "qualificationLevel")
+    private Set<Group> groups = new HashSet<>();
 
     public QualificationLevel() {
     }
@@ -44,11 +44,11 @@ public class QualificationLevel {
         this.title = title;
     }
 
-//    public Set<Group> getGroups() {
+//    public Set<GroupPx> getGroups() {
 //        return groups;
 //    }
 //
-//    public void setGroups(Set<Group> groups) {
+//    public void setGroups(Set<GroupPx> groups) {
 //        this.groups = groups;
 //    }
 
