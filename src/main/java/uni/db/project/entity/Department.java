@@ -41,6 +41,14 @@ public class Department {
         this.id = id;
     }
 
+    public Faculty getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -57,12 +65,14 @@ public class Department {
         Department that = (Department) o;
 
         if (id != that.id) return false;
+        if (faculty != null ? !faculty.equals(that.faculty) : that.faculty != null) return false;
         return title != null ? title.equals(that.title) : that.title == null;
     }
 
     @Override
     public int hashCode() {
         int result = id;
+        result = 31 * result + (faculty != null ? faculty.hashCode() : 0);
         result = 31 * result + (title != null ? title.hashCode() : 0);
         return result;
     }
@@ -71,6 +81,7 @@ public class Department {
     public String toString() {
         return "Department{" +
                 "id=" + id +
+                ", faculty=" + faculty +
                 ", title='" + title + '\'' +
                 '}';
     }

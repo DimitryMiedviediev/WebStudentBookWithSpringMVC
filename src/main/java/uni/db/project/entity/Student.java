@@ -1,8 +1,6 @@
 package uni.db.project.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Dimitry on 17.03.17.
